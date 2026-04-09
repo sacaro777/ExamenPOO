@@ -30,6 +30,11 @@ public class MarketHub {
     public void setStores(ArrayList<Store> stores) {
         this.stores = stores;
     }
+
+    public MarketHub(ArrayList<User> users, ArrayList<Store> stores) {
+        this.users = new ArrayList <>();;
+        this.stores = new ArrayList <>();;
+    }
     
     
 }

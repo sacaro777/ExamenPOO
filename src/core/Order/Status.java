@@ -8,6 +8,10 @@ package core.Order;
  *
  * @author sacaro
  */
-public class Status {
-    
+public enum Status {
+        PENDING,
+        SENT,
+        DELIVERED,
+        CANCELED     
+        
 }

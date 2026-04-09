@@ -54,6 +54,14 @@ public class Product {
     public void setInventoryQuantity(int inventoryQuantity) {
         this.inventoryQuantity = inventoryQuantity;
     }
+
+    public Product(String name, String description, double price, String category, int inventoryQuantity) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.inventoryQuantity = inventoryQuantity;
+    }
     
     
 }

@@ -36,6 +36,12 @@ public class Element {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public Element(Product product, int quantity, double price) {
+        this.product = product;
+        this.quantity = quantity;
+        this.price = price;
+    }
     
     
 }

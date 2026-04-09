@@ -14,6 +14,10 @@ import java.time.LocalDate;
 public class Seller extends User{
     private Store store;
 
+    public Seller(int id, String name, String email, LocalDate RegristationDate) {
+        super(id, name, email, RegristationDate);
+    }
+
     public Store getStore() {
         return store;
     }
