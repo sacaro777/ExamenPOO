@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Main;
+import core.MarketHub.Product;
+import core.User.Client;
+import core.User.Seller;
 import java.time.LocalDate;
 /**
  *
@@ -238,4 +241,4 @@ public class MainParcial2040 {
     
 }
 
-}
+

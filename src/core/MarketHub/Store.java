@@ -5,57 +5,60 @@
 package core.MarketHub;
 
 import core.User.Seller;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-/**
- *
- * @author sacaro
- */
 public class Store {
+
+    private static int counter = 0;
+    private int id;
     private String name;
-    private LocalDate creationDate;
-    private ArrayList <Product> products;
+    private Date creationDate;
     private Seller owner;
+    private List<Product> products = new ArrayList<>();
+
+    public Store(String name, Seller owner) {
+        this.id = ++counter;
+        this.name = name;
+        this.creationDate = new Date();
+        this.owner = owner;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
     }
 
-    public LocalDate getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
-    }
-
-    public ArrayList<Product> getProducts() {
-        return products;
     }
 
     public Seller getOwner() {
         return owner;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
+    public void addProduct(Product p) {
+        products.add(p);
     }
 
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
+    public Product getProductById(int id) {
+        for (Product p : products) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
     }
 
-    public void setOwner(Seller owner) {
-        this.owner = owner;
+    public Product getProductByIndex(int i) {
+        return (i >= 0 && i < products.size()) ? products.get(i) : null;
     }
-
-    public Store(String name, LocalDate creationDate, ArrayList<Product> products, Seller owner) {
-        this.name = name;
-        this.creationDate = creationDate;
-        this.products = new ArrayList <>();
-        this.owner = owner;
-    }
-    
-    
 }

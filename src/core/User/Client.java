@@ -5,58 +5,60 @@
 package core.User;
 
 import core.Order.Order;
+import core.Order.Status;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author sacaro
- */
 public class Client extends User {
-    private Order order;
 
-    public Client(int id, String name, String email, LocalDate RegristationDate) {
-        super(id, name, email, RegristationDate);
+    private List<Order> orders = new ArrayList<>();
+
+    public Client(String name, String email) {
+        super(name, email);
     }
 
-    public Order getOrder() {
-        return order;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public int getId() {
-        return id;
+    public Order createOrder() {
+        Order o = new Order(this);
+        orders.add(o);
+        return o;
     }
 
-    public String getName() {
-        return name;
+    public Order getOrderById(int id) {
+        for (Order o : orders) {
+            if (o.getId() == id) {
+                return o;
+            }
+        }
+        return null;
     }
 
-    public String getEmail() {
-        return email;
+    public Order getOrderByIndex(int i) {
+        return (i >= 0 && i < orders.size()) ? orders.get(i) : null;
     }
 
-    public LocalDate getRegristationDate() {
-        return RegristationDate;
+    public List<Order> getOrdersByStatus(Status status) {
+        List<Order> result = new ArrayList<>();
+        for (Order o : orders) {
+            if (o.getStatus() == status) {
+                result.add(o);
+            }
+        }
+        return result;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public float getTotalSpent() {
+        float t = 0;
+        for (Order o : orders) {
+            if (o.getStatus() == Status.SENT || o.getStatus() == Status.DELIVERED) {
+                t += o.getTotal();
+            }
+        }
+        return t;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setRegristationDate(LocalDate RegristationDate) {
-        this.RegristationDate = RegristationDate;
-    }
-    
-    
 }
+

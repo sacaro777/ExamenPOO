@@ -4,6 +4,7 @@
  */
 package core.User;
 
+import core.MarketHub.Product;
 import core.MarketHub.Store;
 import java.time.LocalDate;
 
@@ -11,51 +12,31 @@ import java.time.LocalDate;
  *
  * @author sacaro
  */
-public class Seller extends User{
+public class Seller extends User {
+
     private Store store;
 
-    public Seller(int id, String name, String email, LocalDate RegristationDate) {
-        super(id, name, email, RegristationDate);
+    public Seller(String name, String email) {
+        super(name, email);
+    }
+
+    public Seller(int i, String henry_Taylor, String henrytaylorexamplecom, LocalDate of) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public Store getStore() {
         return store;
     }
 
-    public int getId() {
-        return id;
+    public Store createStore(String storeName) {
+        this.store = new Store(storeName, this);
+        return store;
     }
 
-    public String getName() {
-        return name;
-    }
+    public Product addProductToStore(String name, String description, float price, String category){
+        int stock = 0;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public LocalDate getRegristationDate() {
-        return RegristationDate;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setRegristationDate(LocalDate RegristationDate) {
-        this.RegristationDate = RegristationDate;
-    }
-    
-}
+    Product p = new Product(name, description, price, category, stock);
+    store.addProduct (p);
+    return p ;
+}}

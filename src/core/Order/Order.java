@@ -4,21 +4,28 @@
  */
 package core.Order;
 
+import core.MarketHub.Element;
 import core.MarketHub.Product;
 import core.User.Client;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-/**
- *
- * @author sacaro
- */
 public class Order {
+
+    private static int counter = 0;
     private int id;
     private Client client;
-    private LocalDate date;
+    private Date date;
     private Status status;
-    private ArrayList <Product> products;
+    private List<Element> products = new ArrayList<>();
+
+    public Order(Client client) {
+        this.id = ++counter;
+        this.client = client;
+        this.date = new Date();
+        this.status = Status.PENDING;
+    }
 
     public int getId() {
         return id;
@@ -28,7 +35,7 @@ public class Order {
         return client;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -36,37 +43,62 @@ public class Order {
         return status;
     }
 
-    public ArrayList<Product> getProducts() {
+    public List<Element> getProducts() {
         return products;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void addProduct(Product product, int quantity) {
+        for (Element e : products) {
+            if (e.getProduct().getId() == product.getId()) {
+                e.setQuantity(e.getQuantity() + }
+            products.add(new Element(product, quantity));
+        }
+
+
+    public boolean confirm() {
+        if (status != Status.PENDING) {
+            return false;
+        }
+        for (Element e : products) {
+            if (!e.getProduct().hasStock(e.getQuantity())) {
+                return false;
+            }
+        }
+        for (Element e : products) {
+            e.getProduct().reduceStock(e.getQuantity());
+        }
+        status = Status.SENT;
+        return true;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public boolean receive() {
+        if (status != Status.SENT) {
+            return false;
+        }
+        status = Status.DELIVERED;
+        return true;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public boolean cancel() {
+        if (status == Status.PENDING) {
+            status = Status.CANCELED;
+            return true;
+        }
+        if (status == Status.SENT) {
+            for (Element e : products) {
+                e.getProduct().increaseStock(e.getQuantity());
+            }
+            status = Status.CANCELED;
+            return true;
+        }
+        return false;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public float getTotal() {
+        float t = 0;
+        for (Element e : products) {
+            t += e.getSubtotal();
+        }
+        return t;
     }
-
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
-    }
-
-    public Order(int id, Client client, LocalDate date, Status status, ArrayList<Product> products) {
-        this.id = id;
-        this.client = client;
-        this.date = date;
-        this.status = status;
-        this.products = new ArrayList <>();
-    }
-
-    
 }

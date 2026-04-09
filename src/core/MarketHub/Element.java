@@ -9,9 +9,16 @@ package core.MarketHub;
  * @author sacaro
  */
 public class Element {
+
     private Product product;
     private int quantity;
-    private double price;
+    private float price;
+
+    public Element(Product product, int quantity) {
+        this.product = product;
+        this.quantity = quantity;
+        this.price = product.getPrice();
+    }
 
     public Product getProduct() {
         return product;
@@ -21,27 +28,15 @@ public class Element {
         return quantity;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public float getSubtotal() {
+        return price * quantity;
     }
-
-    public Element(Product product, int quantity, double price) {
-        this.product = product;
-        this.quantity = quantity;
-        this.price = price;
-    }
-    
-    
 }

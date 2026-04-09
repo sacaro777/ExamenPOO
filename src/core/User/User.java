@@ -4,18 +4,22 @@
  */
 package core.User;
 
-import java.time.LocalDate;
+import java.util.Date;
 
-/**
- *
- * @author sacaro
- */
 public abstract class User {
 
-    protected int id;
-    protected String name;
-    protected String email;
-    protected LocalDate RegristationDate;
+    private static int counter = 0;
+    private int id;
+    private String name;
+    private String email;
+    private Date registrationDate;
+
+    public User(String name, String email) {
+        this.id = ++counter;
+        this.name = name;
+        this.email = email;
+        this.registrationDate = new Date();
+    }
 
     public int getId() {
         return id;
@@ -29,59 +33,7 @@ public abstract class User {
         return email;
     }
 
-    public LocalDate getRegristationDate() {
-        return RegristationDate;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setRegristationDate(LocalDate RegristationDate) {
-        this.RegristationDate = RegristationDate;
-    }
-
-    public User(int id, String name, String email, LocalDate RegristationDate) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.RegristationDate = RegristationDate;
-    }
-
-    public User(String name, String email) {
-        This Id = ++counter;
-        This.Name = name;
-        This.Email = email;
-        This.registrationDate = new Date();
-    }
-    Public
-
-    int getId() {
-        return id;
-    }
-    Public String
-
-    getName() {
-        return name;
-    }
-    Public String
-
-    getEmail() {
-        return email;
-    }
-    Public Date
-
-    getRegistrationDate() {
+    public Date getRegistrationDate() {
         return registrationDate;
     }
-}
-
 }

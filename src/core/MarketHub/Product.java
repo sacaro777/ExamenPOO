@@ -9,59 +9,70 @@ package core.MarketHub;
  * @author sacaro
  */
 public class Product {
-    private String name;
-    private String description;
-    private double price;
-    private String category;
+
+    private static int counter = 0;
+    private int id;
+    private String name, description, category;
+    private float price;
     private int inventoryQuantity;
 
-    public String getName() {
-        return name;
+    public Product(String name, String description, float price, String category, int inventoryQuantity)
+    this.id = ++counter;
+ 
+    this.name  = name;
+     
+    this.description  = description;
+     
+    this.price  = price;
+     
+    this.category  = category;
+     
+    this.inventoryQuantity  = inventoryQuantity;
+
+    int getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public String getDescription() {
-        return description;
+    public void reduceStock(int quantity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public double getPrice() {
-        return price;
+    public boolean hasStock(int quantity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public String getCategory() {
-        return category;
+    String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public int getInventoryQuantity() {
-        return inventoryQuantity;
+    String getInventoryQuantity() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void increaseStock(int quantity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    float getPrice() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+}
+public int getId() { return id; }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+public String getName() { return name; }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+public float getPrice() { return price; }
 
-    public void setInventoryQuantity(int inventoryQuantity) {
-        this.inventoryQuantity = inventoryQuantity;
-    }
+public int getInventoryQuantity() { return inventoryQuantity; }
 
-    public Product(String name, String description, double price, String category, int inventoryQuantity) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.category = category;
-        this.inventoryQuantity = inventoryQuantity;
-    }
-    
-    
+public String getCategory() { return category; }
+
+public String getDescription() { return description; }
+
+public boolean hasStock(int qty) { return inventoryQuantity >= qty; }
+
+public void reduceStock(int qty) { inventoryQuantity -= qty; }
+
+public void increaseStock(int qty) { inventoryQuantity += qty; }
+
 }
