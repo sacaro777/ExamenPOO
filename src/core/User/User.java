@@ -47,6 +47,13 @@ public abstract class User {
     public void setRegristationDate(LocalDate RegristationDate) {
         this.RegristationDate = RegristationDate;
     }
+
+    public User(int id, String name, String email, LocalDate RegristationDate) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.RegristationDate = RegristationDate;
+    }
     
     
 }

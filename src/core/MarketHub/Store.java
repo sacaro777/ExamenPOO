@@ -49,6 +49,13 @@ public class Store {
     public void setOwner(Seller owner) {
         this.owner = owner;
     }
+
+    public Store(String name, LocalDate creationDate, ArrayList<Product> products, Seller owner) {
+        this.name = name;
+        this.creationDate = creationDate;
+        this.products = new ArrayList <>();
+        this.owner = owner;
+    }
     
     
 }
