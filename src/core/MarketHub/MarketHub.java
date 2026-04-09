@@ -14,4 +14,22 @@ import java.util.ArrayList;
 public class MarketHub {
     private ArrayList <User> users;
     private ArrayList <Store> stores;
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public ArrayList<Store> getStores() {
+        return stores;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
+    }
+
+    public void setStores(ArrayList<Store> stores) {
+        this.stores = stores;
+    }
+    
+    
 }

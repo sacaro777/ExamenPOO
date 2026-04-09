@@ -17,4 +17,38 @@ public class Store {
     private LocalDate creationDate;
     private ArrayList <Product> products;
     private Seller owner;
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    public Seller getOwner() {
+        return owner;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
+    }
+
+    public void setOwner(Seller owner) {
+        this.owner = owner;
+    }
+    
+    
 }
