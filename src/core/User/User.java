@@ -11,6 +11,7 @@ import java.time.LocalDate;
  * @author sacaro
  */
 public abstract class User {
+
     protected int id;
     protected String name;
     protected String email;
@@ -54,6 +55,33 @@ public abstract class User {
         this.email = email;
         this.RegristationDate = RegristationDate;
     }
-    
-    
+
+    public User(String name, String email) {
+        This Id = ++counter;
+        This.Name = name;
+        This.Email = email;
+        This.registrationDate = new Date();
+    }
+    Public
+
+    int getId() {
+        return id;
+    }
+    Public String
+
+    getName() {
+        return name;
+    }
+    Public String
+
+    getEmail() {
+        return email;
+    }
+    Public Date
+
+    getRegistrationDate() {
+        return registrationDate;
+    }
+}
+
 }
